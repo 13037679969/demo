@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Product" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="PROMOTION_PRICE" property="promotionPrice" jdbcType="DECIMAL" />
+    <result column="SALES" property="sales" jdbcType="DECIMAL" />
+    <result column="CATEGORY" property="category" jdbcType="VARCHAR" />
+    <result column="SHELF_LIFE" property="shelfLife" jdbcType="DECIMAL" />
+    <result column="ORIGIN" property="origin" jdbcType="VARCHAR" />
+    <result column="SPECIFICATIONS" property="specifications" jdbcType="VARCHAR" />
+    <result column="PACKING" property="packing" jdbcType="VARCHAR" />
+    <result column="NET_CONTENT" property="netContent" jdbcType="DECIMAL" />
+    <result column="PRODUCTION_LICENSE" property="productionLicense" jdbcType="VARCHAR" />
+    <result column="CONTACT_WAY" property="contactWay" jdbcType="VARCHAR" />
+    <result column="STORAGE_METHOD" property="storageMethod" jdbcType="VARCHAR" />
+    <result column="COUNT" property="count" jdbcType="DECIMAL" />
+    <result column="PIC_PATH" property="picPath" jdbcType="VARCHAR" />
+    <result column="HOT" property="hot" jdbcType="VARCHAR" />
+    <result column="TASTE" property="taste" jdbcType="VARCHAR" />
+    <result column="PRODUCTION_DATE" property="productionDate" jdbcType="DATE" />
+    <result column="SERIES" property="series" jdbcType="VARCHAR" />
+    <result column="BRAND" property="brand" jdbcType="VARCHAR" />
+    <result column="FACTORY" property="factory" jdbcType="VARCHAR" />
+    <result column="IMPORT" property="import" jdbcType="VARCHAR" />
+    <result column="INGREDIENTS" property="ingredients" jdbcType="VARCHAR" />
+    <result column="FREIGHT" property="freight" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, NAME, PRICE, PROMOTION_PRICE, SALES, CATEGORY, SHELF_LIFE, ORIGIN, SPECIFICATIONS, 
+    PACKING, NET_CONTENT, PRODUCTION_LICENSE, CONTACT_WAY, STORAGE_METHOD, COUNT, PIC_PATH, 
+    HOT, TASTE, PRODUCTION_DATE, SERIES, BRAND, FACTORY, IMPORT, INGREDIENTS, FREIGHT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from SSMSHOP_PRODUCT
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from SSMSHOP_PRODUCT
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Product" >
+    insert into SSMSHOP_PRODUCT (ID, NAME, PRICE, 
+      PROMOTION_PRICE, SALES, CATEGORY, 
+      SHELF_LIFE, ORIGIN, SPECIFICATIONS, 
+      PACKING, NET_CONTENT, PRODUCTION_LICENSE, 
+      CONTACT_WAY, STORAGE_METHOD, COUNT, 
+      PIC_PATH, HOT, TASTE, 
+      PRODUCTION_DATE, SERIES, BRAND, 
+      FACTORY, IMPORT, INGREDIENTS, 
+      FREIGHT)
+    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{promotionPrice,jdbcType=DECIMAL}, #{sales,jdbcType=DECIMAL}, #{category,jdbcType=VARCHAR}, 
+      #{shelfLife,jdbcType=DECIMAL}, #{origin,jdbcType=VARCHAR}, #{specifications,jdbcType=VARCHAR}, 
+      #{packing,jdbcType=VARCHAR}, #{netContent,jdbcType=DECIMAL}, #{productionLicense,jdbcType=VARCHAR}, 
+      #{contactWay,jdbcType=VARCHAR}, #{storageMethod,jdbcType=VARCHAR}, #{count,jdbcType=DECIMAL}, 
+      #{picPath,jdbcType=VARCHAR}, #{hot,jdbcType=VARCHAR}, #{taste,jdbcType=VARCHAR}, 
+      #{productionDate,jdbcType=DATE}, #{series,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{factory,jdbcType=VARCHAR}, #{import,jdbcType=VARCHAR}, #{ingredients,jdbcType=VARCHAR}, 
+      #{freight,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.Product" >
+    insert into SSMSHOP_PRODUCT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="promotionPrice != null" >
+        PROMOTION_PRICE,
+      </if>
+      <if test="sales != null" >
+        SALES,
+      </if>
+      <if test="category != null" >
+        CATEGORY,
+      </if>
+      <if test="shelfLife != null" >
+        SHELF_LIFE,
+      </if>
+      <if test="origin != null" >
+        ORIGIN,
+      </if>
+      <if test="specifications != null" >
+        SPECIFICATIONS,
+      </if>
+      <if test="packing != null" >
+        PACKING,
+      </if>
+      <if test="netContent != null" >
+        NET_CONTENT,
+      </if>
+      <if test="productionLicense != null" >
+        PRODUCTION_LICENSE,
+      </if>
+      <if test="contactWay != null" >
+        CONTACT_WAY,
+      </if>
+      <if test="storageMethod != null" >
+        STORAGE_METHOD,
+      </if>
+      <if test="count != null" >
+        COUNT,
+      </if>
+      <if test="picPath != null" >
+        PIC_PATH,
+      </if>
+      <if test="hot != null" >
+        HOT,
+      </if>
+      <if test="taste != null" >
+        TASTE,
+      </if>
+      <if test="productionDate != null" >
+        PRODUCTION_DATE,
+      </if>
+      <if test="series != null" >
+        SERIES,
+      </if>
+      <if test="brand != null" >
+        BRAND,
+      </if>
+      <if test="factory != null" >
+        FACTORY,
+      </if>
+      <if test="import != null" >
+        IMPORT,
+      </if>
+      <if test="ingredients != null" >
+        INGREDIENTS,
+      </if>
+      <if test="freight != null" >
+        FREIGHT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionPrice != null" >
+        #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sales != null" >
+        #{sales,jdbcType=DECIMAL},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="shelfLife != null" >
+        #{shelfLife,jdbcType=DECIMAL},
+      </if>
+      <if test="origin != null" >
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="specifications != null" >
+        #{specifications,jdbcType=VARCHAR},
+      </if>
+      <if test="packing != null" >
+        #{packing,jdbcType=VARCHAR},
+      </if>
+      <if test="netContent != null" >
+        #{netContent,jdbcType=DECIMAL},
+      </if>
+      <if test="productionLicense != null" >
+        #{productionLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="contactWay != null" >
+        #{contactWay,jdbcType=VARCHAR},
+      </if>
+      <if test="storageMethod != null" >
+        #{storageMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=DECIMAL},
+      </if>
+      <if test="picPath != null" >
+        #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="hot != null" >
+        #{hot,jdbcType=VARCHAR},
+      </if>
+      <if test="taste != null" >
+        #{taste,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null" >
+        #{productionDate,jdbcType=DATE},
+      </if>
+      <if test="series != null" >
+        #{series,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="factory != null" >
+        #{factory,jdbcType=VARCHAR},
+      </if>
+      <if test="import != null" >
+        #{import,jdbcType=VARCHAR},
+      </if>
+      <if test="ingredients != null" >
+        #{ingredients,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null" >
+        #{freight,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.Product" >
+    update SSMSHOP_PRODUCT
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionPrice != null" >
+        PROMOTION_PRICE = #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sales != null" >
+        SALES = #{sales,jdbcType=DECIMAL},
+      </if>
+      <if test="category != null" >
+        CATEGORY = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="shelfLife != null" >
+        SHELF_LIFE = #{shelfLife,jdbcType=DECIMAL},
+      </if>
+      <if test="origin != null" >
+        ORIGIN = #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="specifications != null" >
+        SPECIFICATIONS = #{specifications,jdbcType=VARCHAR},
+      </if>
+      <if test="packing != null" >
+        PACKING = #{packing,jdbcType=VARCHAR},
+      </if>
+      <if test="netContent != null" >
+        NET_CONTENT = #{netContent,jdbcType=DECIMAL},
+      </if>
+      <if test="productionLicense != null" >
+        PRODUCTION_LICENSE = #{productionLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="contactWay != null" >
+        CONTACT_WAY = #{contactWay,jdbcType=VARCHAR},
+      </if>
+      <if test="storageMethod != null" >
+        STORAGE_METHOD = #{storageMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        COUNT = #{count,jdbcType=DECIMAL},
+      </if>
+      <if test="picPath != null" >
+        PIC_PATH = #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="hot != null" >
+        HOT = #{hot,jdbcType=VARCHAR},
+      </if>
+      <if test="taste != null" >
+        TASTE = #{taste,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null" >
+        PRODUCTION_DATE = #{productionDate,jdbcType=DATE},
+      </if>
+      <if test="series != null" >
+        SERIES = #{series,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        BRAND = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="factory != null" >
+        FACTORY = #{factory,jdbcType=VARCHAR},
+      </if>
+      <if test="import != null" >
+        IMPORT = #{import,jdbcType=VARCHAR},
+      </if>
+      <if test="ingredients != null" >
+        INGREDIENTS = #{ingredients,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null" >
+        FREIGHT = #{freight,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Product" >
+    update SSMSHOP_PRODUCT
+    set NAME = #{name,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
+      PROMOTION_PRICE = #{promotionPrice,jdbcType=DECIMAL},
+      SALES = #{sales,jdbcType=DECIMAL},
+      CATEGORY = #{category,jdbcType=VARCHAR},
+      SHELF_LIFE = #{shelfLife,jdbcType=DECIMAL},
+      ORIGIN = #{origin,jdbcType=VARCHAR},
+      SPECIFICATIONS = #{specifications,jdbcType=VARCHAR},
+      PACKING = #{packing,jdbcType=VARCHAR},
+      NET_CONTENT = #{netContent,jdbcType=DECIMAL},
+      PRODUCTION_LICENSE = #{productionLicense,jdbcType=VARCHAR},
+      CONTACT_WAY = #{contactWay,jdbcType=VARCHAR},
+      STORAGE_METHOD = #{storageMethod,jdbcType=VARCHAR},
+      COUNT = #{count,jdbcType=DECIMAL},
+      PIC_PATH = #{picPath,jdbcType=VARCHAR},
+      HOT = #{hot,jdbcType=VARCHAR},
+      TASTE = #{taste,jdbcType=VARCHAR},
+      PRODUCTION_DATE = #{productionDate,jdbcType=DATE},
+      SERIES = #{series,jdbcType=VARCHAR},
+      BRAND = #{brand,jdbcType=VARCHAR},
+      FACTORY = #{factory,jdbcType=VARCHAR},
+      IMPORT = #{import,jdbcType=VARCHAR},
+      INGREDIENTS = #{ingredients,jdbcType=VARCHAR},
+      FREIGHT = #{freight,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

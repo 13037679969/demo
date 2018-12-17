@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.UserDao">
+    <select id="queryById" parameterType="java.lang.Integer" resultType="User">
+        select p.ID id,p.NAME name,p.PRICE price,p.PROMOTION_PRICE promotion_price,p.SALES sales,p.CATEGORY category,p.COUNT count,p.PIC_PATH pic_path from SSMSHOP_PRODUCT p where ID=#{id}
+    </select>
+</mapper>
